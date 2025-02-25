@@ -176,18 +176,15 @@
   <p class="mt-2">Respuesta en menos de 24h.</p>
   <form name="contact" method="POST" data-netlify="true" id="contact-form" class="mt-8 max-w-lg mx-auto px-4">
     <input type="hidden" name="form-name" value="contact">
-    <div class="relative">
-      <input type="text" name="name" id="name" placeholder="Tu nombre" required class="w-full p-3 rounded-lg mb-3 text-gray-800">
-      <p id="name-error" class="error">Por favor, ingresa tu nombre.</p>
-    </div>
-    <div class="relative">
-      <input type="email" name="email" id="email" placeholder="Tu email" required class="w-full p-3 rounded-lg mb-3 text-gray-800">
-      <p id="email-error" class="error">Ingresa un email válido.</p>
-    </div>
-    <div class="relative">
-      <textarea name="message" id="message" rows="4" placeholder="¿Qué necesitas? (Landing, Automatización)" required class="w-full p-3 rounded-lg mb-3 text-gray-800"></textarea>
-      <p id="message-error" class="error">Por favor, describe qué necesitas.</p>
-    </div>
+    <input type="text" name="name" id="name" placeholder="Tu nombre" required class="w-full p-3 rounded-lg mb-3 text-gray-800">
+    <div id="name-error" style="display:none; color:red;">Por favor ingresa tu nombre.</div>
+
+    <input type="email" name="email" id="email" placeholder="Tu email" required class="w-full p-3 rounded-lg mb-3 text-gray-800">
+    <div id="email-error" style="display:none; color:red;">Correo inválido.</div>
+
+    <textarea name="message" id="message" rows="4" placeholder="¿Qué necesitas? (Landing, Automatización)" required class="w-full p-3 rounded-lg mb-3 text-gray-800"></textarea>
+    <div id="message-error" style="display:none; color:red;">El mensaje es obligatorio.</div>
+
     <button type="submit" class="bg-white text-blue-900 px-6 py-2 rounded-full mt-4 hover:bg-gray-100 transition w-full sm:w-auto">Enviar</button>
     <p id="form-success" class="mt-4 text-yellow-300">¡Mensaje enviado! Te responderé pronto.</p>
     <p id="form-error" class="mt-4 text-red-300">Hubo un error. Intenta de nuevo.</p>
@@ -223,6 +220,7 @@
       document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
     });
   });
+
   const form = document.getElementById('contact-form');
   const nameInput = document.getElementById('name');
   const emailInput = document.getElementById('email');
@@ -232,12 +230,17 @@
   const messageError = document.getElementById('message-error');
   const successMsg = document.getElementById('form-success');
   const errorMsg = document.getElementById('form-error');
-  form.addEventListener('submit', (e) => {
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     let isValid = true;
+
+    // Resetear mensajes
     [nameError, emailError, messageError].forEach(err => err.style.display = 'none');
     successMsg.style.display = 'none';
     errorMsg.style.display = 'none';
+
+    // Validación
     if (!nameInput.value.trim()) {
       nameError.style.display = 'block';
       isValid = false;
@@ -250,24 +253,38 @@
       messageError.style.display = 'block';
       isValid = false;
     }
+
     if (isValid) {
-      fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      })
-              .then(response => {
-                if (response.ok) {
-                  successMsg.style.display = 'block';
-                  form.reset();
-                  setTimeout(() => window.location.href = '/gracias.html', 2000);
-                } else throw new Error('Error en el envío');
-              })
-              .catch(() => {
-                errorMsg.style.display = 'block';
-              });
+      try {
+        const formData = new FormData(form);
+        const response = await fetch('/', {
+          method: 'POST',
+          body: formData
+        });
+
+        console.log('Response status:', response.status, response.statusText);
+
+        if (response.ok) {
+          successMsg.style.display = 'block';
+          form.reset();
+          // Opcional: Redirigir a página de agradecimiento
+          setTimeout(() => window.location.href = '/gracias.html', 2000);
+        } else {
+          const errorText = await response.text();
+          throw new Error(`Error en el envío: ${response.status} - ${errorText}`);
+        }
+      } catch (error) {
+        let errorMessage = 'Hubo un error. Intenta de nuevo o contáctame por WhatsApp.';
+        if (error && error.message) {
+          errorMessage = `Error: ${error.message}`;
+        }
+        errorMsg.textContent = errorMessage;
+        errorMsg.style.display = 'block';
+        console.error('Error detallado:', errorMessage);
+      }
     }
   });
+
   const scrollTop = document.getElementById('scroll-top');
   window.addEventListener('scroll', () => {
     scrollTop.classList.toggle('hidden', window.scrollY < 200);
