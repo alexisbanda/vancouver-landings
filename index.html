@@ -22,12 +22,12 @@
         "addressCountry": "CA"
       },
       "url": "https://landingvancouver.com",
-      "telephone": "+16041234567"
+      "telephone": "+16043799516"
     }
   </script>
   <style>
     body { font-family: 'Poppins', sans-serif; }
-    header { background-image: url('https://images.pexels.com/photos/3130810/pexels-photo-3130810.jpeg'); background-size: cover; background-position: center; }
+    header { background-image: url('https://smartandings.imgix.net/pexels-photo-3130810.jpeg?w=1500&h=844&fm=webp&auto=compress&fit=crop'); background-size: cover; background-position: center; }
     #navbar.scrolled { background-color: #1E40AF; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
     .error { color: #e53e3e; font-size: 0.875rem; display: none; }
     #form-success, #form-error { display: none; }
@@ -189,9 +189,16 @@
     <p id="form-success" class="mt-4 text-yellow-300">¡Mensaje enviado! Te responderé pronto.</p>
     <p id="form-error" class="mt-4 text-red-300">Hubo un error. Intenta de nuevo.</p>
   </form>
-  <p class="mt-4">O escríbeme: <a href="https://wa.me/16041234567" class="underline hover:text-yellow-400" target="_blank">WhatsApp</a></p>
+  <p class="mt-4">O escríbeme: <a href="https://wa.me/16043799516" class="underline hover:text-yellow-400" target="_blank">WhatsApp</a></p>
 </section>
-
+<!-- Popup de éxito -->
+<div id="success-popup" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white p-6 rounded-lg max-w-md text-center">
+    <h2 class="text-xl font-bold text-blue-800">¡Gracias por tu mensaje!</h2>
+    <p class="mt-2 text-gray-600">Te responderé en menos de 24 horas. Si necesitas algo urgente, contáctame en <a href="https://wa.me/16043799516" class="text-blue-600 hover:underline">WhatsApp</a>.</p>
+    <button onclick="closePopup()" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-500 transition">Cerrar</button>
+  </div>
+</div>
 <!-- Footer -->
 <footer class="bg-blue-950 text-white py-6 text-center relative">
   <p>© 2025 Vancouver Landings. Todos los derechos reservados.</p>
@@ -200,7 +207,7 @@
     <a href="#precios" class="text-yellow-400 hover:underline mx-2">Precios</a> |
     <a href="#contacto" class="text-yellow-400 hover:underline mx-2">Contacto</a>
   </div>
-  <p class="mt-2">Email: hola@vancouverlandings.com | Tel: +1 (604) 123-4567</p>
+  <p class="mt-2">Email: hola@vancouverlandings.com | Tel: +1 (604) 379-9516</p>
   <a href="https://wa.me/16043799516?text=Hola%20Landing%20Vancouver,%20quiero%20una%20landing%20o%20automatización." class="fixed bottom-5 right-5 bg-green-400 text-blue-900 p-3 rounded-full shadow-lg hover:bg-yellow-300" target="_blank">💬</a>
   <button id="scroll-top" class="fixed bottom-16 right-5 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-500 hidden">↑</button>
 </footer>
@@ -265,10 +272,9 @@
         console.log('Response status:', response.status, response.statusText);
 
         if (response.ok) {
+          document.getElementById('success-popup').classList.remove('hidden');
           successMsg.style.display = 'block';
           form.reset();
-          // Opcional: Redirigir a página de agradecimiento
-          setTimeout(() => window.location.href = '/gracias.html', 2000);
         } else {
           const errorText = await response.text();
           throw new Error(`Error en el envío: ${response.status} - ${errorText}`);
@@ -284,6 +290,10 @@
       }
     }
   });
+
+  function closePopup() {
+    document.getElementById('success-popup').classList.add('hidden');
+  }
 
   const scrollTop = document.getElementById('scroll-top');
   window.addEventListener('scroll', () => {
