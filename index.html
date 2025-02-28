@@ -3,231 +3,411 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Vancouver Landings: Páginas web rápidas y automatización simple para negocios en Vancouver. Aumenta tus ventas con soluciones efectivas y accesibles.">
-  <meta name="keywords" content="landing pages Vancouver, automatización negocios, sitios web rápidos, diseño web">
-  <title>🚀 Vancouver Landings | Páginas Rápidas y Automatización</title>
+  <meta name="description" content="Vancouver Landings: Diseña tu landing page o automatización en 24h para freelancers, tiendas pequeñas y negocios locales en Vancouver. ¡Atrae más clientes hoy!">
+  <meta name="keywords" content="landing pages Vancouver, automatización negocios, diseño web rápido, sitios web freelancers, ecommerce Vancouver, negocios locales">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Vancouver Landings | Sitios Web y Automatización Rápida">
+  <meta property="og:description" content="Landing pages y automatización para freelancers, tiendas y negocios locales en Vancouver. ¡Empieza ahora!">
+  <meta property="og:image" content="https://res.cloudinary.com/dvm4ql8eo/image/upload/c_fill,w_1200,h_630/v1740504116/canada-vancouver-banner_bgbose.jpg">
+  <meta property="og:url" content="https://landingvancouver.com">
+  <meta property="og:type" content="website">
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vancouver Landings | Sitios Web y Automatización Rápida">
+  <meta name="twitter:description" content="Landing pages y automatización para freelancers, tiendas y negocios locales en Vancouver.">
+  <meta name="twitter:image" content="https://res.cloudinary.com/dvm4ql8eo/image/upload/c_fill,w_1200,h_630/v1740504116/canada-vancouver-banner_bgbose.jpg">
+  <title>Vancouver Landings | Soluciones Web y Automatización</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="https://img.icons8.com/color/48/000000/web-design.png" type="image/png">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Datos Estructurados para Servicios -->
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Vancouver Landings",
-      "description": "Servicios de diseño de landing pages y automatización para pequeños negocios en Vancouver.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Vancouver",
-        "addressCountry": "CA"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Diseño de Landing Pages",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Vancouver Landings",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Vancouver",
+            "addressRegion": "BC",
+            "addressCountry": "CA"
+          }
+        },
+        "description": "Landing pages rápidas y optimizadas para freelancers, ecommerce y negocios locales en Vancouver.",
+        "areaServed": "Vancouver, BC"
       },
-      "url": "https://landingvancouver.com",
-      "telephone": "+16043799516"
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Automatización de Negocios",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Vancouver Landings"
+        },
+        "description": "Soluciones de automatización simples con bots y flujos para pequeños negocios.",
+        "areaServed": "Vancouver, BC"
+      }
+    ]
   </script>
   <style>
     body { font-family: 'Poppins', sans-serif; }
-    header { background-image: url('https://res.cloudinary.com/dvm4ql8eo/image/upload/c_crop,w_1500/v1740504116/canada-vancouver-banner_bgbose.jpg'); background-size: cover; background-position: center; }
-    #navbar.scrolled { background-color: #1E40AF; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-    .error { color: #e53e3e; font-size: 0.875rem; display: none; }
-    #form-success, #form-error { display: none; }
+    #navbar { transition: all 0.3s ease; }
+    #navbar.scrolled { background-color: #1E40AF; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+    .error { color: #e53e3e; font-size: 0.875rem; margin-top: 0.25rem; display: none; }
+    .form-message { padding: 10px; border-radius: 12px; text-align: center; font-size: clamp(0.9rem, 2vw, 1rem); display: none; }
+    .btn { transition: all 0.2s ease-in-out; }
+    .btn:hover { transform: scale(1.05); }
+    .lazy-bg { background-image: none; }
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Ccircle cx="100" cy="100" r="5" fill="%23fff" opacity="0.3"/%3E%3Ccircle cx="300" cy="200" r="3" fill="%23fff" opacity="0.4"/%3E%3Ccircle cx="500" cy="150" r="4" fill="%23fff" opacity="0.3"/%3E%3C/svg%3E');
+      animation: float 12s infinite ease-in-out;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-30px); }
+    }
+    @media (max-width: 640px) {
+      #navbar.scrolled { background-color: rgba(30, 64, 175, 0.9); }
+    }
+    #lead-magnet { background-color: #1E3A8A; padding-bottom: 2rem; padding-left: 1rem; padding-right: 1rem; }
+    #contacto { background-color: #1F2937; padding-bottom: 2rem; }
+    .form-message.success { background-color: #48BB78; color: white; }
+    .form-message.error { background-color: #E53E3E; color: white; }
+    .btn-lead, .btn-contact { background-color: #F6E05E; color: #1E3A8A; border-radius: 12px; }
+    .btn-lead:hover, .btn-contact:hover { background-color: #D69E2E; color: white; }
+    input, textarea { border-radius: 12px; border: 2px solid #E5E7EB; }
+    .price-card { background-color: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border: 2px solid #1E40AF; transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
+    .price-card:hover { transform: translateY(-5px); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); }
+    .price-card.popular { border-color: #F6E05E; border-width: 4px; }
+    .price-card .popular-badge { position: absolute; top: -10px; right: -10px; background-color: #F6E05E; color: #1E3A8A; padding: 0.25rem 0.5rem; border-radius: 8px; font-size: 0.75rem; font-weight: bold; }
+    footer { background-color: #1E3A8A; padding: 2rem 0; }
+    footer .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; max-width: 7xl; margin: 0 auto; padding: 0 1rem; }
+    footer h3 { font-size: clamp(1rem, 2vw, 1.25rem); color: #93C5FD; font-weight: 600; margin-bottom: 0.5rem; }
+    footer p, footer a { font-size: clamp(0.875rem, 1.5vw, 1rem); color: #E0E1DD; }
+    footer a:hover { color: #F6E05E; }
+    .footer-social a { margin: 0 0.5rem; font-size: 1.25rem; }
+    .footer-bottom { padding-top: 1rem; border-top: 1px solid #374151; margin-top: 1rem; }
+    #precios h2, #precios p { margin-bottom: 1.5rem; }
+    #lead-magnet h2, #lead-magnet p { margin-bottom: 1.5rem; }
+    #contacto h2, #contacto p { margin-bottom: 1rem; }
+    header.lazy-bg { background-size: cover; background-position: center; background-repeat: no-repeat; }
   </style>
 </head>
 
-<body class="bg-gray-100">
-
+<body class="bg-gray-100 text-gray-800">
 <!-- Navbar -->
-<nav id="navbar" class="fixed top-0 left-0 w-full bg-transparent text-white py-4 z-30 transition-colors duration-300">
-  <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
-    <h1 class="text-2xl font-bold">🚀 Vancouver Landings</h1>
+<nav id="navbar" class="fixed top-0 left-0 w-full bg-transparent text-white py-4 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
+    <a href="/" class="text-2xl font-bold flex items-center" style="font-size: clamp(1.5rem, 3vw, 2rem);">
+      <img src="https://img.icons8.com/color/48/000000/web-design.png" alt="Logo de Vancouver Landings" class="w-8 h-8 mr-2">
+      Vancouver Landings
+    </a>
     <div class="flex sm:hidden">
-      <button id="menu-toggle" class="focus:outline-none">
+      <button id="menu-toggle" class="focus:outline-none" aria-label="Abrir menú">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
         </svg>
       </button>
     </div>
     <div class="space-x-6 hidden sm:flex">
-      <a href="#servicios" class="hover:text-yellow-400">Servicios</a>
-      <a href="#precios" class="hover:text-yellow-400">Precios</a>
-      <a href="#contacto" class="hover:text-yellow-400">Contacto</a>
+      <a href="#servicios" class="hover:text-yellow-400 text-lg" style="font-size: clamp(1rem, 2.5vw, 1.2rem);">Servicios</a>
+      <a href="#precios" class="hover:text-yellow-400 text-lg" style="font-size: clamp(1rem, 2.5vw, 1.2rem);">Precios</a>
+      <a href="#contacto" class="hover:text-yellow-400 text-lg" style="font-size: clamp(1rem, 2.5vw, 1.2rem);">Contacto</a>
     </div>
-    <div id="mobile-menu" class="hidden fixed top-16 left-0 w-full bg-blue-900 p-4 flex flex-col items-center space-y-4 sm:hidden">
-      <a href="#servicios" class="hover:text-yellow-400">Servicios</a>
-      <a href="#precios" class="hover:text-yellow-400">Precios</a>
-      <a href="#contacto" class="hover:text-yellow-400">Contacto</a>
+    <div id="mobile-menu" class="hidden fixed top-16 left-0 w-full bg-blue-900 p-6 flex flex-col items-center space-y-4 sm:hidden">
+      <a href="#servicios" class="hover:text-yellow-400 text-lg" style="font-size: clamp(1rem, 2.5vw, 1.2rem);">Servicios</a>
+      <a href="#precios" class="hover:text-yellow-400 text-lg" style="font-size: clamp(1rem, 2.5vw, 1.2rem);">Precios</a>
+      <a href="#contacto" class="hover:text-yellow-400 text-lg" style="font-size: clamp(1rem, 2.5vw, 1.2rem);">Contacto</a>
     </div>
   </div>
 </nav>
 
-<!-- Hero Section -->
-<header class="relative text-white pt-28 sm:pt-32 pb-16 text-center">
-  <div class="absolute inset-0 bg-black opacity-60"></div>
-  <div class="relative z-10 px-2 sm:px-8 max-w-2xl mx-auto">
-    <h1 class="text-2xl sm:text-6xl font-bold leading-tight">Tu Negocio Online en 24 Horas</h1>
-    <p class="mt-2 sm:mt-4 text-base sm:text-xl">Landings rápidas y automatización simple para pequeños negocios.</p>
-    <a href="#precios" class="bg-blue-600 text-white px-6 py-2 sm:px-8 sm:py-3 rounded-full mt-4 sm:mt-6 inline-block hover:bg-blue-500 transition">Ver Planes</a>
+<!-- Hero Section (Ajustado para fit completo) -->
+<header class="relative h-screen text-white text-center lazy-bg" data-bg="https://res.cloudinary.com/dvm4ql8eo/image/upload/t_Banner 16:9/v1740503988/ONE_vancouver_banner_lv332b.jpg">
+  <div class="particles"></div>
+  <div class="absolute inset-0 bg-black opacity-50"></div>
+  <div class="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-8 max-w-4xl mx-auto">
+    <h1 class="text-3xl sm:text-5xl font-bold leading-tight" style="font-size: clamp(2rem, 5vw, 5rem);">Tu Negocio Online en 24 Horas</h1>
+    <p class="mt-6 text-lg sm:text-2xl" style="font-size: clamp(1rem, 3vw, 2rem);">Landing pages y automatización para freelancers, tiendas y negocios locales en Vancouver.</p>
+    <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+      <a href="#precios" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold btn hover:bg-blue-500">Ver Planes</a>
+      <a href="#contacto" class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-full font-semibold btn hover:bg-white hover:text-blue-600">Contáctanos</a>
+    </div>
   </div>
 </header>
 
-<!-- Servicios -->
-<section id="servicios" class="py-16 bg-gray-100 text-center" data-aos="fade-up">
-  <h2 class="text-3xl font-bold text-blue-800">¿Qué ofrecemos?</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10 max-w-5xl mx-auto px-6">
-    <div class="p-6 bg-white rounded-lg shadow-md">
-      <h3 class="text-xl font-bold text-blue-800">Landing Pages Rápidas</h3>
-      <p class="mt-2">Sitios optimizados, listos en 24-48h, para atraer más clientes.</p>
-      <ul class="text-left mt-4 text-sm">
-        <li>✔️ Diseño responsive</li>
-        <li>✔️ Formulario de contacto</li>
-        <li>✔️ SEO básico</li>
+<!-- Main Content -->
+<main>
+  <!-- Servicios -->
+  <section id="servicios" class="py-16 bg-gray-100 text-center" data-aos="fade-up" data-aos-duration="1000">
+    <h2 class="text-3xl sm:text-4xl font-bold text-blue-800" style="font-size: clamp(2rem, 4vw, 4rem);">Soluciones para tu Negocio</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10 max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition">
+        <svg class="w-12 h-12 mx-auto mb-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <h3 class="text-xl font-bold text-blue-800">Landing Pages Rápidas</h3>
+        <p class="mt-2 text-gray-600">Sitios optimizados para freelancers, ecommerce y negocios locales, listos en 24-48h.</p>
+        <ul class="text-left mt-4 text-sm text-gray-600">
+          <li>✔️ Diseño responsive</li>
+          <li>✔️ Formulario de contacto</li>
+          <li>✔️ SEO básico</li>
+        </ul>
+        <a href="#contacto" class="bg-blue-600 text-white px-4 py-2 rounded-full mt-4 inline-block btn hover:bg-blue-500">Solicitar</a>
+      </div>
+      <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition">
+        <svg class="w-12 h-12 mx-auto mb-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+        <h3 class="text-xl font-bold text-blue-800">Automatización Simple</h3>
+        <p class="mt-2 text-gray-600">Bots y flujos para ahorrar tiempo en reservas y mensajes.</p>
+        <ul class="text-left mt-4 text-sm text-gray-600">
+          <li>✔️ Bot de WhatsApp básico</li>
+          <li>✔️ Flujos de email</li>
+          <li>✔️ Integración fácil</li>
+        </ul>
+        <a href="#contacto" class="bg-blue-600 text-white px-4 py-2 rounded-full mt-4 inline-block btn hover:bg-blue-500">Solicitar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Beneficios -->
+  <section id="beneficios" class="py-16 text-center bg-white" data-aos="fade-up" data-aos-duration="1000">
+    <h2 class="text-3xl sm:text-4xl font-bold text-blue-800" style="font-size: clamp(2rem, 4vw, 4rem);">Ventajas de Trabajar con Nosotros</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10 max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="p-6 bg-gray-50 rounded-lg">
+        <svg class="w-10 h-10 mx-auto mb-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+        <h3 class="text-xl font-bold text-blue-800">Entrega Rápida</h3>
+        <p class="text-gray-600">Tu solución lista en 24-48 horas.</p>
+      </div>
+      <div class="p-6 bg-gray-50 rounded-lg">
+        <svg class="w-10 h-10 mx-auto mb-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+        <h3 class="text-xl font-bold text-blue-800">Local</h3>
+        <p class="text-gray-600">Conocemos las necesidades de Vancouver.</p>
+      </div>
+      <div class="p-6 bg-gray-50 rounded-lg">
+        <svg class="w-10 h-10 mx-auto mb-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+        <h3 class="text-xl font-bold text-blue-800">Escalable</h3>
+        <p class="text-gray-600">Crece con soluciones adaptables.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonios -->
+  <section id="testimonios" class="py-16 bg-gray-100 text-center" data-aos="fade-up" data-aos-duration="1000">
+    <h2 class="text-3xl sm:text-4xl font-bold text-blue-800" style="font-size: clamp(2rem, 4vw, 4rem);">Lo que Dicen Nuestros Clientes</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10 max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="p-6 bg-white rounded-lg shadow-md">
+        <img src="https://res.cloudinary.com/dvm4ql8eo/image/upload/c_fill,w_80,h_80/v1740501695/samples/landscapes/beach-boat.jpg" alt="Logo de Cliente 1" class="w-16 h-16 mx-auto mb-4 rounded-full">
+        <p class="text-gray-600">"Aumentamos un 40% las reservas con nuestro nuevo bot."</p>
+        <p class="mt-2 text-sm font-semibold text-blue-800">- Food Truck Vancouver</p>
+      </div>
+      <div class="p-6 bg-white rounded-lg shadow-md">
+        <img src="https://res.cloudinary.com/dvm4ql8eo/image/upload/c_fill,w_80,h_80/v1740501695/samples/animals/cat.jpg" alt="Logo de Cliente 2" class="w-16 h-16 mx-auto mb-4 rounded-full">
+        <p class="text-gray-600">"La landing captó 20 clientes en la primera semana."</p>
+        <p class="mt-2 text-sm font-semibold text-blue-800">- Freelancer Local</p>
+      </div>
+      <div class="p-6 bg-white rounded-lg shadow-md">
+        <img src="https://res.cloudinary.com/dvm4ql8eo/image/upload/c_fill,w_80,h_80/v1740501695/samples/food/spices.jpg" alt="Logo de Cliente 3" class="w-16 h-16 mx-auto mb-4 rounded-full">
+        <p class="text-gray-600">"Ventas online duplicadas con el sitio."</p>
+        <p class="mt-2 text-sm font-semibold text-blue-800">- Tienda Local</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ejemplos -->
+  <section id="ejemplos" class="py-16 text-center bg-white" data-aos="fade-up" data-aos-duration="1000">
+    <h2 class="text-3xl sm:text-4xl font-bold text-blue-800" style="font-size: clamp(2rem, 4vw, 4rem);">Nuestros Proyectos</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10 max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+        <img src="https://res.cloudinary.com/dvm4ql8eo/image/upload/c_fill,w_500,h_300/v1740505905/pexels-photo-3184465_sirthw.jpg" alt="Landing para Freelancer en Vancouver" loading="lazy" class="rounded-lg">
+        <h3 class="text-xl font-bold mt-4 text-blue-800">Freelancer</h3>
+        <p class="text-gray-600 text-sm">Landing optimizada para captar clientes.</p>
+        <a href="#" class="text-blue-600 hover:underline mt-2 inline-block btn">Ver Ejemplo</a>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+        <img src="https://res.cloudinary.com/dvm4ql8eo/image/upload/c_fill,w_500,h_300/v1740501695/samples/ecommerce/shoes.jpg" alt="Landing para Tienda Pequeña en Vancouver" loading="lazy" class="rounded-lg">
+        <h3 class="text-xl font-bold mt-4 text-blue-800">Tienda Pequeña</h3>
+        <p class="text-gray-600 text-sm">E-commerce básico para ventas locales.</p>
+        <a href="#" class="text-blue-600 hover:underline mt-2 inline-block btn">Ver Ejemplo</a>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+        <img src="https://res.cloudinary.com/dvm4ql8eo/image/upload/c_fill,w_500,h_300/v1740501696/cld-sample-4.jpg" alt="Landing para Negocio Local en Vancouver" loading="lazy" class="rounded-lg">
+        <h3 class="text-xl font-bold mt-4 text-blue-800">Negocio Local</h3>
+        <p class="text-gray-600 text-sm">Landing para food truck con pedidos rápidos.</p>
+        <a href="#" class="text-blue-600 hover:underline mt-2 inline-block btn">Ver Ejemplo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Planes y Precios (Ajustado) -->
+  <section id="precios" class="py-16 bg-gray-100 text-center" data-aos="fade-up" data-aos-duration="1000">
+    <h2 class="text-3xl sm:text-4xl font-bold text-blue-800 mb-4" style="font-size: clamp(2rem, 4vw, 4rem);">Elige Tu Plan</h2>
+    <p class="text-lg text-gray-600 mb-8" style="font-size: clamp(1rem, 2vw, 1.5rem);">Oferta por tiempo limitado: ¡Solo 10 plazas disponibles!</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="price-card p-6 rounded-lg">
+        <h3 class="text-xl font-bold text-blue-800 mb-2">Landing Básica</h3>
+        <p class="text-4xl font-bold text-blue-600 mb-4">$75</p>
+        <ul class="text-left mb-6 text-sm text-gray-600 list-none">
+          <li class="flex items-center mb-2"><span class="mr-2">✔️</span> Diseño responsive</li>
+          <li class="flex items-center mb-2"><span class="mr-2">✔️</span> Formulario simple</li>
+          <li class="flex items-center mb-2"><span class="mr-2">✔️</span> Entrega en 24h</li>
+        </ul>
+        <a href="#contacto" class="bg-blue-600 text-white px-6 py-2 rounded-full btn hover:bg-blue-500">Solicitar</a>
+      </div>
+      <div class="price-card p-6 rounded-lg popular relative">
+        <span class="popular-badge">Popular</span>
+        <h3 class="text-xl font-bold text-blue-800 mb-2">Landing + Bot</h3>
+        <p class="text-4xl font-bold text-blue-600 mb-4">$175</p>
+        <ul class="text-left mb-6 text-sm text-gray-600 list-none">
+          <li class="flex items-center mb-2"><span class="mr-2">✔️</span> Landing personalizada</li>
+          <li class="flex items-center mb-2"><span class="mr-2">✔️</span> Bot de WhatsApp</li>
+          <li class="flex items-center mb-2"><span class="mr-2">✔️</span> SEO básico</li>
+        </ul>
+        <a href="#contacto" class="bg-blue-600 text-white px-6 py-2 rounded-full btn hover:bg-blue-500">Solicitar</a>
+      </div>
+      <div class="price-card p-6 rounded-lg">
+        <h3 class="text-xl font-bold text-blue-800 mb-2">Automatización Pro</h3>
+        <p class="text-4xl font-bold text-blue-600 mb-4">$150</p>
+        <ul class="text-left mb-6 text-sm text-gray-600 list-none">
+          <li class="flex items-center mb-2"><span class="mr-2">✔️</span> Bot o flujo de email</li>
+          <li class="flex items-center mb-2"><span class="mr-2">✔️</span> Integración personalizada</li>
+          <li class="flex items-center mb-2"><span class="mr-2">✔️</span> Soporte inicial</li>
+        </ul>
+        <a href="#contacto" class="bg-blue-600 text-white px-6 py-2 rounded-full btn hover:bg-blue-500">Solicitar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lead Magnet (Ajustado) -->
+  <section id="lead-magnet" class="py-16 bg-blue-800 text-white text-center" data-aos="fade-up" data-aos-duration="1000">
+    <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="font-size: clamp(2rem, 4vw, 4rem);">Descarga Nuestra Guía Gratuita</h2>
+    <p class="text-lg mb-6" style="font-size: clamp(1rem, 2.5vw, 1.5rem);">"5 Estrategias para Aumentar tus Ventas Online”</p>
+    <form name="lead" method="POST" data-netlify="true" id="lead-form" class="mt-8 max-w-md mx-auto px-4">
+      <input type="hidden" name="form-name" value="lead">
+      <input type="text" name="honeypot" style="display: none;" aria-hidden="true">
+      <input type="email" name="email" id="lead-email" placeholder="Tu Email" required class="w-full p-3 rounded-lg mb-4 text-gray-800 focus:ring-2 focus:ring-yellow-400" aria-label="Correo Electrónico para Guía">
+      <div class="error hidden" id="lead-email-error">Correo inválido.</div>
+      <button type="submit" class="btn-lead px-6 py-3 rounded-full mt-4 w-full sm:w-auto font-semibold">Descargar Ahora</button>
+      <div class="form-message success hidden" id="lead-success">¡Guía enviada! Revisa tu correo.</div>
+      <div class="form-message error hidden" id="lead-error">Hubo un error. Intenta de nuevo.</div>
+    </form>
+  </section>
+
+  <!-- Contacto (Ajustado) -->
+  <section id="contacto" class="py-16 bg-blue-700 text-white text-center" data-aos="fade-up" data-aos-duration="1000">
+    <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="font-size: clamp(2rem, 4vw, 4rem);">Contáctanos Hoy</h2>
+    <p class="text-lg mb-6" style="font-size: clamp(1rem, 2.5vw, 1.5rem);">Respuesta en menos de 24h</p>
+    <form name="contact" method="POST" data-netlify="true" id="contact-form" class="mt-8 max-w-lg mx-auto px-4 relative">
+      <input type="hidden" name="form-name" value="contact">
+      <input type="text" name="honeypot" style="display: none;" aria-hidden="true">
+      <input type="text" name="name" id="name" placeholder="Tu Nombre" required class="w-full p-3 rounded-lg mb-4 text-gray-800 focus:ring-2 focus:ring-blue-500" aria-label="Nombre">
+      <div class="error hidden" id="name-error">Por favor ingresa tu nombre.</div>
+      <input type="email" name="email" id="email" placeholder="Tu Email" required class="w-full p-3 rounded-lg mb-4 text-gray-800 focus:ring-2 focus:ring-blue-500" aria-label="Correo Electrónico">
+      <div class="error hidden" id="email-error">Correo inválido.</div>
+      <textarea name="message" id="message" rows="4" placeholder="¿Qué necesitas? (Landing, Automatización)" required class="w-full p-3 rounded-lg mb-4 text-gray-800 focus:ring-2 focus:ring-blue-500" aria-label="Mensaje"></textarea>
+      <div class="error hidden" id="message-error">El mensaje es obligatorio.</div>
+      <button type="submit" class="btn-contact px-6 py-3 rounded-full mt-4 w-full sm:w-auto font-semibold">Enviar Mensaje</button>
+      <div class="form-message success hidden absolute w-full left-0 mt-4" id="form-success">¡Mensaje enviado! Te responderé pronto.</div>
+      <div class="form-message error hidden absolute w-full left-0 mt-4" id="form-error">Hubo un error. Intenta de nuevo.</div>
+    </form>
+    <p class="mt-16 text-lg">O contáctanos directamente: <a href="https://wa.me/16043799516" class="underline hover:text-yellow-400" target="_blank">WhatsApp</a> | <a href="mailto:hola@vancouverlandings.com" class="underline hover:text-yellow-400">hola@vancouverlandings.com</a></p>
+  </section>
+</main>
+
+<!-- Footer Mejorado (Diferenciado) -->
+<footer class="bg-blue-950 text-white py-8 text-center">
+  <div class="footer-grid max-w-7xl mx-auto px-4 sm:px-6">
+    <div>
+      <h3 class="text-xl font-bold mb-2 text-blue-300">Vancouver Landings</h3>
+      <p class="text-sm">Soluciones web y automatización para tu éxito en Vancouver.</p>
+    </div>
+    <div>
+      <h3 class="text-xl font-bold mb-2 text-blue-300">Enlaces</h3>
+      <ul class="text-sm">
+        <li><a href="#servicios" class="hover:text-yellow-400">Servicios</a></li>
+        <li><a href="#precios" class="hover:text-yellow-400">Precios</a></li>
+        <li><a href="#contacto" class="hover:text-yellow-400">Contacto</a></li>
       </ul>
-      <a href="#contacto" class="bg-blue-600 text-white px-4 py-2 rounded-full mt-4 inline-block hover:bg-blue-500 transition">Solicitar</a>
     </div>
-    <div class="p-6 bg-white rounded-lg shadow-md">
-      <h3 class="text-xl font-bold text-blue-800">Automatización Simple</h3>
-      <p class="mt-2">Bots y flujos que ahorran tiempo en reservas y mensajes.</p>
-      <ul class="text-left mt-4 text-sm">
-        <li>✔️ Bot de WhatsApp básico</li>
-        <li>✔️ Flujos de email</li>
-        <li>✔️ Integración fácil</li>
-      </ul>
-      <a href="#contacto" class="bg-blue-600 text-white px-4 py-2 rounded-full mt-4 inline-block hover:bg-blue-500 transition">Solicitar</a>
+    <div>
+      <h3 class="text-xl font-bold mb-2 text-blue-300">Contáctanos</h3>
+      <p class="text-sm">📧 Email: <a href="mailto:hola@vancouverlandings.com" class="hover:text-yellow-400">hola@vancouverlandings.com</a></p>
+      <p class="text-sm">📞 Tel: <a href="tel:+16043799516" class="hover:text-yellow-400">+1 (604) 379-9516</a></p>
     </div>
-  </div>
-</section>
-
-<!-- Beneficios -->
-<section id="beneficios" class="py-16 text-center" data-aos="fade-up">
-  <h2 class="text-3xl font-bold text-blue-800">¿Por qué elegirnos?</h2>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10 max-w-5xl mx-auto px-6">
-    <div class="p-6 bg-gray-50 rounded-lg">
-      <h3 class="text-xl font-bold text-blue-800">⚡ Entrega Rápida</h3>
-      <p>Tu landing o automatización lista en 24-48 horas.</p>
-    </div>
-    <div class="p-6 bg-gray-50 rounded-lg">
-      <h3 class="text-xl font-bold text-blue-800">🏠 Local</h3>
-      <p>Entendemos las necesidades de tu negocio.</p>
-    </div>
-    <div class="p-6 bg-gray-50 rounded-lg">
-      <h3 class="text-xl font-bold text-blue-800">📈 Escalable</h3>
-      <p>Crece con soluciones que se adaptan a ti.</p>
+    <div>
+      <h3 class="text-xl font-bold mb-2 text-blue-300">Síguenos</h3>
+      <div class="footer-social flex justify-center">
+        <a href="https://wa.me/16043799516" target="_blank" class="text-yellow-400 hover:text-yellow-300">📞</a>
+        <a href="https://twitter.com" target="_blank" class="text-yellow-400 hover:text-yellow-300">🐦</a>
+        <a href="https://linkedin.com" target="_blank" class="text-yellow-400 hover:text-yellow-300">in</a>
+      </div>
     </div>
   </div>
-</section>
-
-<!-- Ejemplos -->
-<section class="py-16 text-center" data-aos="fade-up">
-  <h2 class="text-3xl font-bold text-blue-800">Ejemplos de Nuestro Trabajo</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10 max-w-5xl mx-auto px-6">
-    <div class="bg-white p-4 rounded-lg shadow-lg">
-      <img src="https://res.cloudinary.com/dvm4ql8eo/image/upload/c_pad,w_500/v1740501696/cld-sample-4.jpg" alt="Landing optimizada para Food Truck en Vancouver" loading="lazy" class="rounded-lg">
-      <h3 class="text-xl font-bold mt-4 text-blue-800">Food Truck Vancouver</h3>
-      <p class="text-gray-600 text-sm">Landing optimizada para pedidos rápidos.</p>
-    </div>
-    <div class="bg-white p-4 rounded-lg shadow-lg">
-      <img src="https://res.cloudinary.com/dvm4ql8eo/image/upload/c_pad,w_500/v1740505905/pexels-photo-3184465_sirthw.jpg" alt="Landing y bot para Freelancer en Vancouver" loading="lazy" class="rounded-lg">
-      <h3 class="text-xl font-bold mt-4 text-blue-800">Freelancer Local</h3>
-      <p class="text-gray-600 text-sm">Web + bot para captar clientes.</p>
-    </div>
+  <div class="footer-bottom mt-4">
+    <p class="text-sm">© 2025 Vancouver Landings. Todos los derechos reservados.</p>
   </div>
-</section>
-
-<!-- Planes y Precios -->
-<section id="precios" class="py-16 bg-gray-100 text-center" data-aos="fade-up">
-  <h2 class="text-3xl font-bold text-blue-800">Planes y Precios</h2>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10 max-w-6xl mx-auto px-6">
-    <div class="bg-white p-6 rounded-lg shadow-lg">
-      <h3 class="text-xl font-bold text-blue-800">Landing Básica</h3>
-      <p class="text-4xl font-bold my-4 text-blue-600">$75</p>
-      <ul class="text-left mb-6 text-sm">
-        <li>✔️ Diseño responsive</li>
-        <li>✔️ Formulario simple</li>
-        <li>✔️ Entrega en 24h</li>
-      </ul>
-      <a href="#contacto" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-500 transition">Solicitar</a>
-    </div>
-    <div class="bg-white p-6 rounded-lg shadow-lg border-4 border-blue-600">
-      <h3 class="text-xl font-bold text-blue-800">Landing + Bot</h3>
-      <p class="text-4xl font-bold my-4 text-blue-600">$175</p>
-      <ul class="text-left mb-6 text-sm">
-        <li>✔️ Landing personalizada</li>
-        <li>✔️ Bot de WhatsApp</li>
-        <li>✔️ SEO básico</li>
-      </ul>
-      <a href="#contacto" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-500 transition">Solicitar</a>
-    </div>
-    <div class="bg-white p-6 rounded-lg shadow-lg">
-      <h3 class="text-xl font-bold text-blue-800">Automatización Pro</h3>
-      <p class="text-4xl font-bold my-4 text-blue-600">$150</p>
-      <ul class="text-left mb-6 text-sm">
-        <li>✔️ Bot o flujo de email</li>
-        <li>✔️ Integración personalizada</li>
-        <li>✔️ Soporte inicial</li>
-      </ul>
-      <a href="#contacto" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-500 transition">Solicitar</a>
-    </div>
-  </div>
-</section>
-
-<!-- Contacto -->
-<section id="contacto" class="py-16 bg-blue-900 text-white text-center" data-aos="fade-up">
-  <h2 class="text-3xl font-bold">¡Hablemos de tu proyecto!</h2>
-  <p class="mt-2">Respuesta en menos de 24h.</p>
-  <form name="contact" method="POST" data-netlify="true" id="contact-form" class="mt-8 max-w-lg mx-auto px-4">
-    <input type="hidden" name="form-name" value="contact">
-    <input type="text" name="name" id="name" placeholder="Tu nombre" required class="w-full p-3 rounded-lg mb-3 text-gray-800">
-    <div id="name-error" style="display:none; color:red;">Por favor ingresa tu nombre.</div>
-
-    <input type="email" name="email" id="email" placeholder="Tu email" required class="w-full p-3 rounded-lg mb-3 text-gray-800">
-    <div id="email-error" style="display:none; color:red;">Correo inválido.</div>
-
-    <textarea name="message" id="message" rows="4" placeholder="¿Qué necesitas? (Landing, Automatización)" required class="w-full p-3 rounded-lg mb-3 text-gray-800"></textarea>
-    <div id="message-error" style="display:none; color:red;">El mensaje es obligatorio.</div>
-
-    <button type="submit" class="bg-white text-blue-900 px-6 py-2 rounded-full mt-4 hover:bg-gray-100 transition w-full sm:w-auto">Enviar</button>
-    <p id="form-success" class="mt-4 text-yellow-300">¡Mensaje enviado! Te responderé pronto.</p>
-    <p id="form-error" class="mt-4 text-red-300">Hubo un error. Intenta de nuevo.</p>
-  </form>
-  <p class="mt-4">O escríbeme: <a href="https://wa.me/16043799516" class="underline hover:text-yellow-400" target="_blank">WhatsApp</a></p>
-</section>
-<!-- Popup de éxito -->
-<div id="success-popup" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-  <div class="bg-white p-6 rounded-lg max-w-md text-center">
-    <h2 class="text-xl font-bold text-blue-800">¡Gracias por tu mensaje!</h2>
-    <p class="mt-2 text-gray-600">Te responderé en menos de 24 horas. Si necesitas algo urgente, contáctame en <a href="https://wa.me/16043799516" class="text-blue-600 hover:underline">WhatsApp</a>.</p>
-    <button onclick="closePopup()" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-500 transition">Cerrar</button>
-  </div>
-</div>
-<!-- Footer -->
-<footer class="bg-blue-950 text-white py-6 text-center relative">
-  <p>© 2025 Vancouver Landings. Todos los derechos reservados.</p>
-  <div class="mt-2">
-    <a href="#servicios" class="text-yellow-400 hover:underline mx-2">Servicios</a> |
-    <a href="#precios" class="text-yellow-400 hover:underline mx-2">Precios</a> |
-    <a href="#contacto" class="text-yellow-400 hover:underline mx-2">Contacto</a>
-  </div>
-  <p class="mt-2">Email: hola@vancouverlandings.com | Tel: +1 (604) 379-9516</p>
-  <a href="https://wa.me/16043799516?text=Hola%20Landing%20Vancouver,%20quiero%20una%20landing%20o%20automatización." class="fixed bottom-5 right-5 bg-green-400 text-blue-900 p-3 rounded-full shadow-lg hover:bg-yellow-300" target="_blank">💬</a>
-  <button id="scroll-top" class="fixed bottom-16 right-5 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-500 hidden">↑</button>
+  <a href="https://wa.me/16043799516?text=Hola%20Vancouver%20Landings,%20quiero%20una%20landing%20o%20automatización" class="fixed bottom-5 right-5 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition btn" target="_blank" aria-label="Contactar por WhatsApp">📞</a>
+  <button id="scroll-top" class="fixed bottom-20 right-5 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-500 transition hidden btn" aria-label="Volver arriba">↑</button>
 </footer>
 
 <!-- Scripts -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
 <script>
-  AOS.init();
+  // Lazy Load de Fondo con IntersectionObserver
+  document.addEventListener('DOMContentLoaded', () => {
+    const lazyElements = document.querySelectorAll('.lazy-bg');
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const bgUrl = entry.target.getAttribute('data-bg');
+          entry.target.style.backgroundImage = `url('${bgUrl}')`;
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px 100px 0px' });
+    lazyElements.forEach(el => observer.observe(el));
+  });
+
+  // Inicialización de AOS
+  document.addEventListener('DOMContentLoaded', () => {
+    AOS.init({ duration: 1000, once: true });
+  });
+
+  // Navbar Scroll
   const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+    const hero = document.querySelector('.hero');
+    if (window.scrollY === 0) {
+      hero.style.height = '100vh';
+    } else {
+      hero.style.height = 'auto';
+    }
+  });
+
+  // Menú Móvil
   const menuToggle = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
   menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+  });
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
       document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      mobileMenu.classList.add('hidden');
     });
   });
 
+  // Validación en Tiempo Real para Formulario de Contacto
   const form = document.getElementById('contact-form');
   const nameInput = document.getElementById('name');
   const emailInput = document.getElementById('email');
@@ -238,69 +418,107 @@
   const successMsg = document.getElementById('form-success');
   const errorMsg = document.getElementById('form-error');
 
+  function validateInput(input, errorElement, regex = null) {
+    const value = input.value.trim();
+    if (!value) {
+      errorElement.classList.remove('hidden');
+      return false;
+    } else if (regex && !regex.test(value)) {
+      errorElement.classList.remove('hidden');
+      return false;
+    } else {
+      errorElement.classList.add('hidden');
+      return true;
+    }
+  }
+
+  [nameInput, emailInput, messageInput].forEach(input => {
+    input.addEventListener('input', () => {
+      if (input.id === 'name') validateInput(input, nameError);
+      if (input.id === 'email') validateInput(input, emailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+      if (input.id === 'message') validateInput(input, messageError);
+    });
+  });
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     let isValid = true;
 
-    // Resetear mensajes
-    [nameError, emailError, messageError].forEach(err => err.style.display = 'none');
-    successMsg.style.display = 'none';
-    errorMsg.style.display = 'none';
+    [nameError, emailError, messageError, successMsg, errorMsg].forEach(el => el.classList.add('hidden'));
 
-    // Validación
-    if (!nameInput.value.trim()) {
-      nameError.style.display = 'block';
-      isValid = false;
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
-      emailError.style.display = 'block';
-      isValid = false;
-    }
-    if (!messageInput.value.trim()) {
-      messageError.style.display = 'block';
-      isValid = false;
-    }
+    isValid &= validateInput(nameInput, nameError);
+    isValid &= validateInput(emailInput, emailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+    isValid &= validateInput(messageInput, messageError);
 
     if (isValid) {
       try {
         const formData = new FormData(form);
-        const response = await fetch('/', {
+        const response = await fetch('https://formspree.io/f/tu-id', {
           method: 'POST',
-          body: formData
+          body: formData,
+          headers: { 'Accept': 'application/json' }
         });
 
-        console.log('Response status:', response.status, response.statusText);
-
         if (response.ok) {
-          document.getElementById('success-popup').classList.remove('hidden');
-          successMsg.style.display = 'block';
+          successMsg.classList.remove('hidden');
+          form.classList.add('hidden');
+          setTimeout(() => {
+            successMsg.classList.add('hidden');
+            form.classList.remove('hidden');
+          }, 3000);
           form.reset();
         } else {
-          const errorText = await response.text();
-          throw new Error(`Error en el envío: ${response.status} - ${errorText}`);
+          throw new Error('Error en el envío');
         }
       } catch (error) {
-        let errorMessage = 'Hubo un error. Intenta de nuevo o contáctame por WhatsApp.';
-        if (error && error.message) {
-          errorMessage = `Error: ${error.message}`;
-        }
-        errorMsg.textContent = errorMessage;
-        errorMsg.style.display = 'block';
-        console.error('Error detallado:', errorMessage);
+        errorMsg.classList.remove('hidden');
+        setTimeout(() => errorMsg.classList.add('hidden'), 3000);
       }
     }
   });
 
-  function closePopup() {
-    document.getElementById('success-popup').classList.add('hidden');
-  }
+  // Validación para Lead Magnet
+  const leadForm = document.getElementById('lead-form');
+  const leadEmail = document.getElementById('lead-email');
+  const leadEmailError = document.getElementById('lead-email-error');
+  const leadSuccess = document.getElementById('lead-success');
+  const leadError = document.getElementById('lead-error');
 
-  const scrollTop = document.getElementById('scroll-top');
-  window.addEventListener('scroll', () => {
-    scrollTop.classList.toggle('hidden', window.scrollY < 200);
+  leadEmail.addEventListener('input', () => validateInput(leadEmail, leadEmailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/));
+
+  leadForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (validateInput(leadEmail, leadEmailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+      try {
+        const formData = new FormData(leadForm);
+        const response = await fetch('https://formspree.io/f/tu-id', {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          leadSuccess.classList.remove('hidden');
+          leadForm.classList.add('hidden');
+          setTimeout(() => {
+            leadSuccess.classList.add('hidden');
+            leadForm.classList.remove('hidden');
+          }, 3000);
+          leadForm.reset();
+        } else {
+          throw new Error('Error en el envío');
+        }
+      } catch (error) {
+        leadError.classList.remove('hidden');
+        setTimeout(() => leadError.classList.add('hidden'), 3000);
+      }
+    }
   });
+
+  // Scroll Top
+  const scrollTop = document.getElementById('scroll-top');
+  window.addEventListener('scroll', () => scrollTop.classList.toggle('hidden', window.scrollY < 200));
   scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 </script>
-
 </body>
 </html>
