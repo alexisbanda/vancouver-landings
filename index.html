@@ -58,8 +58,8 @@
     body { font-family: 'Poppins', sans-serif; }
     #navbar { transition: all 0.3s ease; }
     #navbar.scrolled { background-color: #1E40AF; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-    .error { color: #e53e3e; font-size: 0.875rem; margin-top: 0.25rem; display: none; }
-    .form-message { padding: 10px; border-radius: 12px; text-align: center; font-size: clamp(0.9rem, 2vw, 1rem); display: none; }
+    .error { color: #e53e3e; font-size: 0.875rem; margin-top: 0.25rem; }
+    .form-message { padding: 10px; border-radius: 12px; text-align: center; font-size: clamp(0.9rem, 2vw, 1rem); }
     .btn { transition: all 0.2s ease-in-out; }
     .btn:hover { transform: scale(1.05); }
     .lazy-bg { background-image: none; }
@@ -104,6 +104,7 @@
     #ejemplos h2 { margin-bottom: 1.5rem; }
     header.lazy-bg { background-size: cover; background-position: center; background-repeat: no-repeat; }
     #download-popup { display: none; }
+    .loading { opacity: 0.5; cursor: not-allowed; }
   </style>
 </head>
 
@@ -295,6 +296,7 @@
     <p class="text-lg mb-6" style="font-size: clamp(1rem, 2.5vw, 1.5rem);">"5 Estrategias para Aumentar tus Ventas Online”</p>
     <form name="lead" method="POST" data-netlify="true" id="lead-form" class="mt-8 max-w-md mx-auto px-4">
       <input type="hidden" name="form-name" value="lead">
+      <input type="hidden" name="form-type" value="lead">
       <input type="text" name="honeypot" style="display: none;" aria-hidden="true">
       <input type="email" name="email" id="lead-email" placeholder="Tu Email" required class="w-full p-3 rounded-lg mb-4 text-gray-800 focus:ring-2 focus:ring-yellow-400" aria-label="Correo Electrónico para Guía">
       <div class="error hidden" id="lead-email-error">Correo inválido.</div>
@@ -313,6 +315,7 @@
         <p class="text-gray-600 mb-4">Descarga nuestra plantilla GRATIS para crear tu propia landing.</p>
         <form name="plantilla" method="POST" data-netlify="true">
           <input type="hidden" name="form-name" value="plantilla">
+          <input type="hidden" name="form-type" value="plantilla">
           <input type="text" name="honeypot" style="display: none;" aria-hidden="true">
           <input type="email" name="email" placeholder="Tu Email" required class="w-full p-3 rounded-lg mb-3 text-gray-800 focus:ring-2 focus:ring-blue-500" aria-label="Correo para Plantilla">
           <div class="error hidden" id="plantilla-email-error">Correo inválido.</div>
@@ -326,6 +329,7 @@
         <p class="text-gray-600 mb-4">10 pasos para automatizar tu negocio con WhatsApp y Email.</p>
         <form name="checklist" method="POST" data-netlify="true">
           <input type="hidden" name="form-name" value="checklist">
+          <input type="hidden" name="form-type" value="checklist">
           <input type="text" name="honeypot" style="display: none;" aria-hidden="true">
           <input type="email" name="email" placeholder="Tu Email" required class="w-full p-3 rounded-lg mb-3 text-gray-800 focus:ring-2 focus:ring-blue-500" aria-label="Correo para Checklist">
           <div class="error hidden" id="checklist-email-error">Correo inválido.</div>
@@ -343,6 +347,7 @@
     <p class="text-lg mb-6" style="font-size: clamp(1rem, 2.5vw, 1.5rem);">Respuesta en menos de 24h</p>
     <form name="contact" method="POST" data-netlify="true" id="contact-form" class="mt-8 max-w-lg mx-auto px-4 relative">
       <input type="hidden" name="form-name" value="contact">
+      <input type="hidden" name="form-type" value="contacto">
       <input type="text" name="honeypot" style="display: none;" aria-hidden="true">
       <input type="text" name="name" id="name" placeholder="Tu Nombre" required class="w-full p-3 rounded-lg mb-4 text-gray-800 focus:ring-2 focus:ring-blue-500" aria-label="Nombre">
       <div class="error hidden" id="name-error">Por favor ingresa tu nombre.</div>
@@ -351,8 +356,8 @@
       <textarea name="message" id="message" rows="4" placeholder="¿Qué necesitas? (Landing, Automatización)" required class="w-full p-3 rounded-lg mb-4 text-gray-800 focus:ring-2 focus:ring-blue-500" aria-label="Mensaje"></textarea>
       <div class="error hidden" id="message-error">El mensaje es obligatorio.</div>
       <button type="submit" class="btn-contact px-6 py-3 rounded-full mt-4 w-full sm:w-auto font-semibold">Enviar Mensaje</button>
-      <div class="form-message success hidden absolute w-full left-0 mt-4" id="form-success">¡Mensaje enviado! Te responderé pronto.</div>
-      <div class="form-message error hidden absolute w-full left-0 mt-4" id="form-error">Hubo un error. Intenta de nuevo.</div>
+      <div class="form-message success hidden" id="form-success">¡Mensaje enviado! Te responderé pronto.</div>
+      <div class="form-message error hidden" id="form-error">Hubo un error. Intenta de nuevo.</div>
     </form>
     <p class="mt-16 text-lg">O contáctanos directamente: <a href="https://wa.me/16043799516" class="underline hover:text-yellow-400" target="_blank">WhatsApp</a> | <a href="mailto:hola@vancouverlandings.com" class="underline hover:text-yellow-400">hola@vancouverlandings.com</a></p>
   </section>
@@ -401,6 +406,7 @@
     <p class="text-gray-600 mb-4">Obtén nuestra "Guía de SEO Local" ¡Regístrate ahora!</p>
     <form name="popup" method="POST" data-netlify="true">
       <input type="hidden" name="form-name" value="popup">
+      <input type="hidden" name="form-type" value="popup">
       <input type="text" name="honeypot" style="display: none;" aria-hidden="true">
       <input type="email" name="email" placeholder="Tu Email" required class="w-full p-3 rounded-lg mb-3 text-gray-800 focus:ring-2 focus:ring-blue-500" aria-label="Correo para Pop-up">
       <div class="error hidden" id="popup-email-error">Correo inválido.</div>
@@ -461,17 +467,7 @@
     });
   });
 
-  // Validación en Tiempo Real para Formulario de Contacto
-  const form = document.getElementById('contact-form');
-  const nameInput = document.getElementById('name');
-  const emailInput = document.getElementById('email');
-  const messageInput = document.getElementById('message');
-  const nameError = document.getElementById('name-error');
-  const emailError = document.getElementById('email-error');
-  const messageError = document.getElementById('message-error');
-  const successMsg = document.getElementById('form-success');
-  const errorMsg = document.getElementById('form-error');
-
+  // Función validateInput
   function validateInput(input, errorElement, regex = null) {
     const value = input.value.trim();
     if (!value) {
@@ -486,6 +482,20 @@
     }
   }
 
+  // Validación para Contacto (contact-form)
+  const contactForm = document.getElementById('contact-form');
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const messageInput = document.getElementById('message');
+  const nameError = document.getElementById('name-error');
+  const emailError = document.getElementById('email-error');
+  const messageError = document.getElementById('message-error');
+  const formSuccess = document.getElementById('form-success');
+  const formError = document.getElementById('form-error');
+  const submitButton = contactForm.querySelector('button[type="submit"]');
+  const loadingClass = 'loading';
+  const originalButtonText = submitButton.textContent;
+
   [nameInput, emailInput, messageInput].forEach(input => {
     input.addEventListener('input', () => {
       if (input.id === 'name') validateInput(input, nameError);
@@ -494,109 +504,218 @@
     });
   });
 
-  form.addEventListener('submit', (e) => {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
     let isValid = true;
-    [nameError, emailError, messageError, successMsg, errorMsg].forEach(el => el.classList.add('hidden'));
+    [nameError, emailError, messageError, formSuccess, formError].forEach(el => el.classList.add('hidden'));
 
     isValid &= validateInput(nameInput, nameError);
     isValid &= validateInput(emailInput, emailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/);
     isValid &= validateInput(messageInput, messageError);
 
     if (isValid) {
-      // No usar e.preventDefault() aquí para dejar que Netlify procese
-      successMsg.classList.remove('hidden');
-      form.classList.add('hidden');
-      setTimeout(() => {
-        successMsg.classList.add('hidden');
-        form.classList.remove('hidden');
-        form.reset(); // Netlify ya procesará el envío, pero reseteamos manualmente
-      }, 3000);
-    } else {
-      e.preventDefault(); // Solo prevenir si hay errores
+      submitButton.classList.add(loadingClass);
+      submitButton.textContent = 'Enviando...';
+
+      const formData = new FormData(contactForm);
+      try {
+        const response = await fetch('/.netlify/functions/form-submit', {
+          method: 'POST',
+          body: formData,
+        });
+        if (response.ok) {
+          formSuccess.classList.remove('hidden');
+          contactForm.classList.add('hidden');
+          setTimeout(() => {
+            formSuccess.classList.add('hidden');
+            contactForm.classList.remove('hidden');
+            contactForm.reset();
+            submitButton.classList.remove(loadingClass);
+            submitButton.textContent = originalButtonText;
+          }, 3000);
+        } else {
+          const errorText = await response.text(); // Obtener el mensaje de error de Netlify
+          throw new Error(`Error en el envío: ${errorText || 'Error desconocido'}`);
+        }
+      } catch (error) {
+        console.error('Error en AJAX:', error);
+        formError.textContent = error.message || 'Hubo un error. Intenta de nuevo.';
+        formError.classList.remove('hidden');
+        setTimeout(() => {
+          formError.classList.add('hidden');
+          formError.textContent = 'Hubo un error. Intenta de nuevo.'; // Restaurar mensaje por defecto
+        }, 3000);
+        submitButton.classList.remove(loadingClass);
+        submitButton.textContent = originalButtonText;
+      }
     }
   });
 
-  // Validación para Lead Magnet
+  // Validación para Lead Magnet (lead-form)
   const leadForm = document.getElementById('lead-form');
   const leadEmail = document.getElementById('lead-email');
   const leadEmailError = document.getElementById('lead-email-error');
   const leadSuccess = document.getElementById('lead-success');
   const leadError = document.getElementById('lead-error');
+  const leadSubmitButton = leadForm.querySelector('button[type="submit"]');
+  const originalLeadButtonText = leadSubmitButton.textContent;
 
   leadEmail.addEventListener('input', () => validateInput(leadEmail, leadEmailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/));
 
-  leadForm.addEventListener('submit', (e) => {
+  leadForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
     let isValid = true;
     [leadEmailError, leadSuccess, leadError].forEach(el => el.classList.add('hidden'));
 
     isValid &= validateInput(leadEmail, leadEmailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/);
 
     if (isValid) {
-      leadSuccess.classList.remove('hidden');
-      leadForm.classList.add('hidden');
-      setTimeout(() => {
-        leadSuccess.classList.add('hidden');
-        leadForm.classList.remove('hidden');
-        leadForm.reset(); // Netlify procesará el envío automáticamente
-      }, 3000);
-    } else {
-      e.preventDefault(); // Solo prevenir si hay errores
+      leadSubmitButton.classList.add(loadingClass);
+      leadSubmitButton.textContent = 'Enviando...';
+
+      const formData = new FormData(leadForm);
+      try {
+        const response = await fetch('/.netlify/functions/form-submit', {
+          method: 'POST',
+          body: formData,
+        });
+        if (response.ok) {
+          leadSuccess.classList.remove('hidden');
+          leadForm.classList.add('hidden');
+          setTimeout(() => {
+            leadSuccess.classList.add('hidden');
+            leadForm.classList.remove('hidden');
+            leadForm.reset();
+            leadSubmitButton.classList.remove(loadingClass);
+            leadSubmitButton.textContent = originalLeadButtonText;
+          }, 3000);
+        } else {
+          const errorText = await response.text();
+          throw new Error(`Error en el envío: ${errorText || 'Error desconocido'}`);
+        }
+      } catch (error) {
+        console.error('Error en AJAX:', error);
+        leadError.textContent = error.message || 'Hubo un error. Intenta de nuevo.';
+        leadError.classList.remove('hidden');
+        setTimeout(() => {
+          leadError.classList.add('hidden');
+          leadError.textContent = 'Hubo un error. Intenta de nuevo.'; // Restaurar mensaje por defecto
+        }, 3000);
+        leadSubmitButton.classList.remove(loadingClass);
+        leadSubmitButton.textContent = originalLeadButtonText;
+      }
     }
   });
 
-  // Validación para Plantilla
+  // Validación para Plantilla (plantilla)
   const plantillaForm = document.querySelector('form[name="plantilla"]');
   const plantillaEmail = document.querySelector('form[name="plantilla"] input[name="email"]');
   const plantillaEmailError = document.getElementById('plantilla-email-error');
   const plantillaSuccess = document.getElementById('plantilla-success');
   const plantillaError = document.getElementById('plantilla-error');
+  const plantillaSubmitButton = plantillaForm.querySelector('button[type="submit"]');
+  const originalPlantillaButtonText = plantillaSubmitButton.textContent;
 
   plantillaEmail.addEventListener('input', () => validateInput(plantillaEmail, plantillaEmailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/));
 
-  plantillaForm.addEventListener('submit', (e) => {
+  plantillaForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
     let isValid = true;
     [plantillaEmailError, plantillaSuccess, plantillaError].forEach(el => el.classList.add('hidden'));
 
     isValid &= validateInput(plantillaEmail, plantillaEmailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/);
 
     if (isValid) {
-      plantillaSuccess.classList.remove('hidden');
-      plantillaForm.classList.add('hidden');
-      setTimeout(() => {
-        plantillaSuccess.classList.add('hidden');
-        plantillaForm.classList.remove('hidden');
-        plantillaForm.reset(); // Netlify procesará el envío automáticamente
-      }, 3000);
-    } else {
-      e.preventDefault(); // Solo prevenir si hay errores
+      plantillaSubmitButton.classList.add(loadingClass);
+      plantillaSubmitButton.textContent = 'Enviando...';
+
+      const formData = new FormData(plantillaForm);
+      try {
+        const response = await fetch('/.netlify/functions/form-submit', {
+          method: 'POST',
+          body: formData,
+        });
+        if (response.ok) {
+          plantillaSuccess.classList.remove('hidden');
+          plantillaForm.classList.add('hidden');
+          setTimeout(() => {
+            plantillaSuccess.classList.add('hidden');
+            plantillaForm.classList.remove('hidden');
+            plantillaForm.reset();
+            plantillaSubmitButton.classList.remove(loadingClass);
+            plantillaSubmitButton.textContent = originalPlantillaButtonText;
+          }, 3000);
+        } else {
+          const errorText = await response.text();
+          throw new Error(`Error en el envío: ${errorText || 'Error desconocido'}`);
+        }
+      } catch (error) {
+        console.error('Error en AJAX:', error);
+        plantillaError.textContent = error.message || 'Hubo un error. Intenta de nuevo.';
+        plantillaError.classList.remove('hidden');
+        setTimeout(() => {
+          plantillaError.classList.add('hidden');
+          plantillaError.textContent = 'Hubo un error. Intenta de nuevo.'; // Restaurar mensaje por defecto
+        }, 3000);
+        plantillaSubmitButton.classList.remove(loadingClass);
+        plantillaSubmitButton.textContent = originalPlantillaButtonText;
+      }
     }
   });
 
-  // Validación para Checklist
+  // Validación para Checklist (checklist)
   const checklistForm = document.querySelector('form[name="checklist"]');
   const checklistEmail = document.querySelector('form[name="checklist"] input[name="email"]');
   const checklistEmailError = document.getElementById('checklist-email-error');
   const checklistSuccess = document.getElementById('checklist-success');
   const checklistError = document.getElementById('checklist-error');
+  const checklistSubmitButton = checklistForm.querySelector('button[type="submit"]');
+  const originalChecklistButtonText = checklistSubmitButton.textContent;
 
   checklistEmail.addEventListener('input', () => validateInput(checklistEmail, checklistEmailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/));
 
-  checklistForm.addEventListener('submit', (e) => {
+  checklistForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
     let isValid = true;
     [checklistEmailError, checklistSuccess, checklistError].forEach(el => el.classList.add('hidden'));
 
     isValid &= validateInput(checklistEmail, checklistEmailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/);
 
     if (isValid) {
-      checklistSuccess.classList.remove('hidden');
-      checklistForm.classList.add('hidden');
-      setTimeout(() => {
-        checklistSuccess.classList.add('hidden');
-        checklistForm.classList.remove('hidden');
-        checklistForm.reset(); // Netlify procesará el envío automáticamente
-      }, 3000);
-    } else {
-      e.preventDefault(); // Solo prevenir si hay errores
+      checklistSubmitButton.classList.add(loadingClass);
+      checklistSubmitButton.textContent = 'Enviando...';
+
+      const formData = new FormData(checklistForm);
+      try {
+        const response = await fetch('/.netlify/functions/form-submit', {
+          method: 'POST',
+          body: formData,
+        });
+        if (response.ok) {
+          checklistSuccess.classList.remove('hidden');
+          checklistForm.classList.add('hidden');
+          setTimeout(() => {
+            checklistSuccess.classList.add('hidden');
+            checklistForm.classList.remove('hidden');
+            checklistForm.reset();
+            checklistSubmitButton.classList.remove(loadingClass);
+            checklistSubmitButton.textContent = originalChecklistButtonText;
+          }, 3000);
+        } else {
+          const errorText = await response.text();
+          throw new Error(`Error en el envío: ${errorText || 'Error desconocido'}`);
+        }
+      } catch (error) {
+        console.error('Error en AJAX:', error);
+        checklistError.textContent = error.message || 'Hubo un error. Intenta de nuevo.';
+        checklistError.classList.remove('hidden');
+        setTimeout(() => {
+          checklistError.classList.add('hidden');
+          checklistError.textContent = 'Hubo un error. Intenta de nuevo.'; // Restaurar mensaje por defecto
+        }, 3000);
+        checklistSubmitButton.classList.remove(loadingClass);
+        checklistSubmitButton.textContent = originalChecklistButtonText;
+      }
     }
   });
 
@@ -618,32 +737,60 @@
     }
   });
 
-  // Validación para el formulario del pop-up
+  // Validación para el formulario del pop-up (popup)
   const popupForm = document.querySelector('form[name="popup"]');
   const popupEmail = document.querySelector('form[name="popup"] input[name="email"]');
   const popupEmailError = document.getElementById('popup-email-error');
   const popupSuccess = document.getElementById('popup-success');
   const popupError = document.getElementById('popup-error');
+  const popupSubmitButton = popupForm.querySelector('button[type="submit"]');
+  const originalPopupButtonText = popupSubmitButton.textContent;
 
   popupEmail.addEventListener('input', () => validateInput(popupEmail, popupEmailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/));
 
-  popupForm.addEventListener('submit', (e) => {
+  popupForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
     let isValid = true;
     [popupEmailError, popupSuccess, popupError].forEach(el => el.classList.add('hidden'));
 
     isValid &= validateInput(popupEmail, popupEmailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/);
 
     if (isValid) {
-      popupSuccess.classList.remove('hidden');
-      popupForm.classList.add('hidden');
-      setTimeout(() => {
-        popupSuccess.classList.add('hidden');
-        popupForm.classList.remove('hidden');
-        document.getElementById('download-popup').classList.add('hidden');
-        popupForm.reset(); // Netlify procesará el envío automáticamente
-      }, 3000);
-    } else {
-      e.preventDefault(); // Solo prevenir si hay errores
+      popupSubmitButton.classList.add(loadingClass);
+      popupSubmitButton.textContent = 'Enviando...';
+
+      const formData = new FormData(popupForm);
+      try {
+        const response = await fetch('/.netlify/functions/form-submit', {
+          method: 'POST',
+          body: formData,
+        });
+        if (response.ok) {
+          popupSuccess.classList.remove('hidden');
+          popupForm.classList.add('hidden');
+          setTimeout(() => {
+            popupSuccess.classList.add('hidden');
+            popupForm.classList.remove('hidden');
+            document.getElementById('download-popup').classList.add('hidden');
+            popupForm.reset();
+            popupSubmitButton.classList.remove(loadingClass);
+            popupSubmitButton.textContent = originalPopupButtonText;
+          }, 3000);
+        } else {
+          const errorText = await response.text();
+          throw new Error(`Error en el envío: ${errorText || 'Error desconocido'}`);
+        }
+      } catch (error) {
+        console.error('Error en AJAX:', error);
+        popupError.textContent = error.message || 'Hubo un error. Intenta de nuevo.';
+        popupError.classList.remove('hidden');
+        setTimeout(() => {
+          popupError.classList.add('hidden');
+          popupError.textContent = 'Hubo un error. Intenta de nuevo.'; // Restaurar mensaje por defecto
+        }, 3000);
+        popupSubmitButton.classList.remove(loadingClass);
+        popupSubmitButton.textContent = originalPopupButtonText;
+      }
     }
   });
 
