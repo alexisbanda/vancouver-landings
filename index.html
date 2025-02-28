@@ -253,6 +253,7 @@
   <section id="precios" class="py-16 bg-gray-100 text-center" data-aos="fade-up" data-aos-duration="1000">
     <h2 class="text-3xl sm:text-4xl font-bold text-blue-800 mb-4" style="font-size: clamp(2rem, 4vw, 4rem);">Elige Tu Plan</h2>
     <p class="text-lg text-gray-600 mb-8" style="font-size: clamp(1rem, 2vw, 1.5rem);">Oferta por tiempo limitado: ¡Solo 10 plazas disponibles!</p>
+    <p id="contador-disponibilidad" class="text-lg text-red-500 font-semibold"></p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4 sm:px-6">
       <div class="price-card p-6 rounded-lg">
         <h3 class="text-xl font-bold text-blue-800 mb-2">Landing Básica</h3>
@@ -494,9 +495,7 @@
   });
 
   form.addEventListener('submit', (e) => {
-    e.preventDefault();
     let isValid = true;
-
     [nameError, emailError, messageError, successMsg, errorMsg].forEach(el => el.classList.add('hidden'));
 
     isValid &= validateInput(nameInput, nameError);
@@ -504,13 +503,16 @@
     isValid &= validateInput(messageInput, messageError);
 
     if (isValid) {
+      // No usar e.preventDefault() aquí para dejar que Netlify procese
       successMsg.classList.remove('hidden');
       form.classList.add('hidden');
       setTimeout(() => {
         successMsg.classList.add('hidden');
         form.classList.remove('hidden');
+        form.reset(); // Netlify ya procesará el envío, pero reseteamos manualmente
       }, 3000);
-      form.reset();
+    } else {
+      e.preventDefault(); // Solo prevenir si hay errores
     }
   });
 
@@ -524,15 +526,21 @@
   leadEmail.addEventListener('input', () => validateInput(leadEmail, leadEmailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/));
 
   leadForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (validateInput(leadEmail, leadEmailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+    let isValid = true;
+    [leadEmailError, leadSuccess, leadError].forEach(el => el.classList.add('hidden'));
+
+    isValid &= validateInput(leadEmail, leadEmailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+
+    if (isValid) {
       leadSuccess.classList.remove('hidden');
       leadForm.classList.add('hidden');
       setTimeout(() => {
         leadSuccess.classList.add('hidden');
         leadForm.classList.remove('hidden');
+        leadForm.reset(); // Netlify procesará el envío automáticamente
       }, 3000);
-      leadForm.reset();
+    } else {
+      e.preventDefault(); // Solo prevenir si hay errores
     }
   });
 
@@ -546,15 +554,21 @@
   plantillaEmail.addEventListener('input', () => validateInput(plantillaEmail, plantillaEmailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/));
 
   plantillaForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (validateInput(plantillaEmail, plantillaEmailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+    let isValid = true;
+    [plantillaEmailError, plantillaSuccess, plantillaError].forEach(el => el.classList.add('hidden'));
+
+    isValid &= validateInput(plantillaEmail, plantillaEmailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+
+    if (isValid) {
       plantillaSuccess.classList.remove('hidden');
       plantillaForm.classList.add('hidden');
       setTimeout(() => {
         plantillaSuccess.classList.add('hidden');
         plantillaForm.classList.remove('hidden');
+        plantillaForm.reset(); // Netlify procesará el envío automáticamente
       }, 3000);
-      plantillaForm.reset();
+    } else {
+      e.preventDefault(); // Solo prevenir si hay errores
     }
   });
 
@@ -568,15 +582,21 @@
   checklistEmail.addEventListener('input', () => validateInput(checklistEmail, checklistEmailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/));
 
   checklistForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (validateInput(checklistEmail, checklistEmailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+    let isValid = true;
+    [checklistEmailError, checklistSuccess, checklistError].forEach(el => el.classList.add('hidden'));
+
+    isValid &= validateInput(checklistEmail, checklistEmailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+
+    if (isValid) {
       checklistSuccess.classList.remove('hidden');
       checklistForm.classList.add('hidden');
       setTimeout(() => {
         checklistSuccess.classList.add('hidden');
         checklistForm.classList.remove('hidden');
+        checklistForm.reset(); // Netlify procesará el envío automáticamente
       }, 3000);
-      checklistForm.reset();
+    } else {
+      e.preventDefault(); // Solo prevenir si hay errores
     }
   });
 
@@ -608,16 +628,22 @@
   popupEmail.addEventListener('input', () => validateInput(popupEmail, popupEmailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/));
 
   popupForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (validateInput(popupEmail, popupEmailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+    let isValid = true;
+    [popupEmailError, popupSuccess, popupError].forEach(el => el.classList.add('hidden'));
+
+    isValid &= validateInput(popupEmail, popupEmailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+
+    if (isValid) {
       popupSuccess.classList.remove('hidden');
       popupForm.classList.add('hidden');
       setTimeout(() => {
         popupSuccess.classList.add('hidden');
         popupForm.classList.remove('hidden');
         document.getElementById('download-popup').classList.add('hidden');
+        popupForm.reset(); // Netlify procesará el envío automáticamente
       }, 3000);
-      popupForm.reset();
+    } else {
+      e.preventDefault(); // Solo prevenir si hay errores
     }
   });
 
@@ -625,6 +651,29 @@
   const scrollTop = document.getElementById('scroll-top');
   window.addEventListener('scroll', () => scrollTop.classList.toggle('hidden', window.scrollY < 200));
   scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Contador regresivo hasta una fecha específica (ejemplo: oferta limitada hasta el 10 de marzo)
+  const ofertaExpira = new Date('2025-03-10T23:59:59').getTime();
+
+  function actualizarContador() {
+    const ahora = new Date().getTime();
+    const diferencia = ofertaExpira - ahora;
+
+    if (diferencia <= 0) {
+      document.getElementById('contador-disponibilidad').innerHTML = '¡Últimas horas para aprovechar la oferta!';
+      return;
+    }
+
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+
+    document.getElementById('contador-disponibilidad').innerHTML =
+            `Oferta termina en ${dias} días, ${horas}h ${minutos}m`;
+  }
+
+  setInterval(actualizarContador, 1000);
+  actualizarContador();
 </script>
 </body>
 </html>
