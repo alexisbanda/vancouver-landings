@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vancouver-landings.netlify.app/sitemap.xml
