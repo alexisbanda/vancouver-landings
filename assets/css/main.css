@@ -46,5 +46,5 @@ footer a:hover { color: #F6E05E; }
 #recursos h2 { margin-bottom: 1.5rem; }
 #ejemplos h2 { margin-bottom: 1.5rem; }
 header.lazy-bg { background-size: cover; background-position: center; background-repeat: no-repeat; }
-#download-popup { display: none; }
+#download-popup { display: flex; }
 .loading { opacity: 0.5; cursor: not-allowed; }
