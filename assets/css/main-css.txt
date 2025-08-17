@@ -29,7 +29,10 @@ body { font-family: 'Poppins', sans-serif; }
 .btn-lead, .btn-contact { background-color: #F6E05E; color: #1E3A8A; border-radius: 12px; }
 .btn-lead:hover, .btn-contact:hover { background-color: #D69E2E; color: white; }
 input, textarea { border-radius: 12px; border: 2px solid #E5E7EB; }
-
+.price-card { background-color: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border: 2px solid #1E40AF; transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
+.price-card:hover { transform: translateY(-5px); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); }
+.price-card.popular { border-color: #F6E05E; border-width: 4px; }
+.price-card .popular-badge { position: absolute; top: -10px; right: -10px; background-color: #F6E05E; color: #1E3A8A; padding: 0.25rem 0.5rem; border-radius: 8px; font-size: 0.75rem; font-weight: bold; }
 footer { background-color: #1E3A8A; padding: 2rem 0; }
 footer .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; max-width: 7xl; margin: 0 auto; padding: 0 1rem; }
 footer h3 { font-size: clamp(1rem, 2vw, 1.25rem); color: #93C5FD; font-weight: 600; margin-bottom: 0.5rem; }
@@ -37,7 +40,7 @@ footer p, footer a { font-size: clamp(0.875rem, 1.5vw, 1rem); color: #E0E1DD; }
 footer a:hover { color: #F6E05E; }
 .footer-social a { margin: 0 0.5rem; font-size: 1.25rem; }
 .footer-bottom { padding-top: 1rem; border-top: 1px solid #374151; margin-top: 1rem; }
-
+#precios h2, #precios p { margin-bottom: 1.5rem; }
 #lead-magnet h2, #lead-magnet p { margin-bottom: 1.5rem; }
 #contacto h2, #contacto p { margin-bottom: 1rem; }
 #recursos h2 { margin-bottom: 1.5rem; }
