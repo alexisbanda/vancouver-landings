@@ -45,3 +45,33 @@ footer a:hover { color: #F6E05E; }
 header.lazy-bg { background-size: cover; background-position: center; background-repeat: no-repeat; }
 #download-popup { display: none; }
 .loading { opacity: 0.5; cursor: not-allowed; }
+
+/* Custom Cursor Styles */
+:root {
+  cursor: none;
+}
+
+body, button, a {
+  cursor: none;
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(251, 191, 36, 0.7);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease-in-out, height 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  z-index: 9999;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor.expanded {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(251, 191, 36, 0.4);
+}
